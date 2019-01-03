@@ -14,9 +14,9 @@ class RoomList extends Component {
   componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
       const room = snapshot.val();
-      room.key = snapshot.key
+      room.key = snapshot.key;
       this.setState({ rooms: this.state.rooms.concat( room ) })
-    });
+    })
   }
 
   createRoom(roomName) {
@@ -30,13 +30,15 @@ class RoomList extends Component {
   }
 
 render() {
+  console.log("this.props",this.props)
   return(
     <section>
       <ul>
-     <div>roomList</div>
+     <div>Bloc Chat</div>
      {this.state.rooms.map((room,index) =>
-       <li key={room.key}>
+       <li key={room.key} onClick={() => this.props.setActiveRoom(room)}>
        {room.name}
+       {this.props.activeRoomName === room.key ? "Active" : " "}
        </li>
      )}
        </ul>
