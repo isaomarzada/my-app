@@ -23,7 +23,7 @@ class MessageList extends Component {
   render() {
     return(
       <ul>
-      {this.state.messages.filter((message) => message.roomId === this.props.activeRoomName).map((message) =>
+      {this.state.messages.map((message) =>
       <li key={message.key}>
         {message.content}
         </li>
