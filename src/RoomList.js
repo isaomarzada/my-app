@@ -29,6 +29,10 @@ class RoomList extends Component {
     this.setState({roomName: e.target.value})
   }
 
+  deleteRoom(room) {
+    console.log(`room`, room)
+  }
+
 render() {
   console.log("this.props",this.props)
   return(

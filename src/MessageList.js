@@ -38,6 +38,16 @@ class MessageList extends Component {
     this.setState({newMessage: e.target.value})
   }
 
+  deleteMessage(message) {
+    console.log(`delete message trigger`)
+    const newMessages = this.state.messages.filter((m) => {
+      return m !== message;
+    })
+    this.setState({
+      messages: newMessages
+    })
+  }
+
   render() {
     return(
       <section>
@@ -45,6 +55,7 @@ class MessageList extends Component {
       {this.state.messages.filter((message) => message.roomId === this.props.activeRoomName).map((message) =>
       <li key={message.key}>
         {message.content}
+        <button onClick={() => this.deleteMessage(message)}>Delete</button>
         </li>
       )}
       </ul>
